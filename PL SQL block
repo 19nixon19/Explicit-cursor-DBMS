@@ -1,0 +1,18 @@
+DECLARE  
+ CURSOR C1 IS   
+   SELECT ,supp_id,supp_name  
+   FROM Orders  
+   WHERE Supp_id LIKE '%PERFUME%'  
+   AND Customer_id < 100  
+   ORDER BY supp_name;  
+BEGIN  
+  
+//Beginning of FOR LOOP//  
+  FOR item IN C1  
+  LOOP  
+    DBMS_OUTPUT.PUT_LINE  
+     ('Supplier Name = ' || item.supp_name || ', Supplier ID = ' || item.Supp_id);  
+  END LOOP;  
+//End of FOR LOOP//  
+  
+END;
