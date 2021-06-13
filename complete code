@@ -1,0 +1,31 @@
+create table orders(supp_id int,supp_name varchar(255),Items varchar(255),Customer_id int);
+
+insert into orders values('111',' charu','DEO','99');
+
+insert into orders values('112',' nivi','PERFUME','102');
+
+insert into orders values('113',' nixon','PERFUME','99');
+
+insert into orders values('114',' nimo','DEO','106');
+
+DECLARE   
+Sid int; 
+Sname varchar(255); 
+ CURSOR C1 IS    
+   SELECT supp_id,supp_name   
+   FROM Orders   
+   WHERE Items='PERFUME' 
+   AND Customer_id < 100   
+   ORDER BY supp_name;   
+BEGIN   
+  OPEN C1; 
+  LOOP   
+   FETCH C1 INTO Sid, sname; 
+Exit when c1%notfound; 
+    DBMS_OUTPUT.PUT_LINE   
+     ('Supplier Name = ' || sname || ', Supplier ID = ' || Sid);   
+  END LOOP;   
+Close C1; 
+END; 
+/
+
